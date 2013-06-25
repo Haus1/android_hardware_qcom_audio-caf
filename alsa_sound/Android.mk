@@ -29,6 +29,9 @@ endif
 ifneq ($(strip $(QCOM_PROXY_DEVICE_ENABLED)),false)
     common_cflags += -DQCOM_PROXY_DEVICE_ENABLED
 endif
+ifeq ($(strip $(QCOM_FM_ENABLED)),true)
+    LOCAL_CFLAGS += -DQCOM_FM_ENABLED
+endif
 ifneq ($(strip $(QCOM_OUTPUT_FLAGS_ENABLED)),false)
     common_cflags += -DQCOM_OUTPUT_FLAGS_ENABLED
 endif
@@ -212,6 +215,31 @@ include $(CLEAR_VARS)
 
 LOCAL_CFLAGS := -D_POSIX_SOURCE
 LOCAL_CFLAGS += $(common_cflags)
+
+ifeq ($(strip $(QCOM_ACDB_ENABLED)),true)
+    LOCAL_CFLAGS += -DQCOM_ACDB_ENABLED
+endif
+ifeq ($(strip $(QCOM_ANC_HEADSET_ENABLED)),true)
+    LOCAL_CFLAGS += -DQCOM_ANC_HEADSET_ENABLED
+endif
+ifeq ($(strip $(QCOM_AUDIO_FORMAT_ENABLED)),true)
+    LOCAL_CFLAGS += -DQCOM_AUDIO_FORMAT_ENABLED
+endif
+ifeq ($(strip $(QCOM_CSDCLIENT_ENABLED)),true)
+    LOCAL_CFLAGS += -DQCOM_CSDCLIENT_ENABLED
+endif
+ifeq ($(strip $(QCOM_FM_ENABLED)),true)
+    LOCAL_CFLAGS += -DQCOM_FM_ENABLED
+endif
+ifeq ($(strip $(QCOM_PROXY_DEVICE_ENABLED)),true)
+    LOCAL_CFLAGS += -DQCOM_PROXY_DEVICE_ENABLED
+endif
+ifeq ($(strip $(QCOM_SSR_ENABLED)),true)
+    LOCAL_CFLAGS += -DQCOM_SSR_ENABLED
+endif
+ifeq ($(strip $(QCOM_USBAUDIO_ENABLED)),true)
+    LOCAL_CFLAGS += -DQCOM_USBAUDIO_ENABLED
+endif
 
 LOCAL_SRC_FILES := \
     audio_policy_hal.cpp \
