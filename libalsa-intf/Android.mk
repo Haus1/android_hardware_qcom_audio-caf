@@ -13,8 +13,8 @@ $(shell touch $(OUT)/obj/SHARED_LIBRARIES/libacdbloader_intermediates/export_inc
 
 # Any prebuilt files with default TAGS can use the below:
 include $(CLEAR_VARS)
-#LOCAL_SRC_FILES:= aplay.c alsa_pcm.c alsa_mixer.c
-LOCAL_SRC_FILES:= aplay.c
+LOCAL_SRC_FILES:= aplay.c alsa_pcm.c alsa_mixer.c
+#LOCAL_SRC_FILES:= aplay.c
 LOCAL_MODULE:= aplay
 LOCAL_SHARED_LIBRARIES:= libc libcutils libalsa-intf
 LOCAL_C_INCLUDES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
@@ -24,8 +24,8 @@ LOCAL_MODULE_TAGS:= debug
 include $(BUILD_EXECUTABLE)
 
 include $(CLEAR_VARS)
-#LOCAL_SRC_FILES:= arec.c alsa_pcm.c
-LOCAL_SRC_FILES:= arec.c
+LOCAL_SRC_FILES:= arec.c alsa_pcm.c
+#LOCAL_SRC_FILES:= arec.c
 LOCAL_C_INCLUDES += $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_ADDITIONAL_DEPENDENCIES  := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr
 LOCAL_MODULE:= arec
@@ -64,7 +64,7 @@ LOCAL_COPY_HEADERS      += msm8960_use_cases.h
 LOCAL_SRC_FILES:= alsa_mixer.c alsa_pcm.c alsa_ucm.c
 LOCAL_MODULE:= libalsa-intf
 LOCAL_MODULE_TAGS := optional
-LOCAL_SHARED_LIBRARIES:= libc libcutils #libutils #libmedia libhardware_legacy
+LOCAL_SHARED_LIBRARIES:= libc libcutils libhardware_legacy libutils libmedia
 LOCAL_C_INCLUDES := $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/include
 LOCAL_CFLAGS := $(common_cflags) -DQC_PROP -DCONFIG_DIR=\"/system/etc/snd_soc_msm/\"
 LOCAL_CFLAGS += -DCONFIG_DIR=\"/system/etc/snd_soc_msm/\"
