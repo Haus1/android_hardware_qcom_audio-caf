@@ -16,10 +16,10 @@
  */
 
 #define LOG_TAG "AudioPolicyManagerALSA"
-//#define LOG_NDEBUG 0
-//#define LOG_NDDEBUG 0
+#define LOG_NDEBUG 0
+#define LOG_NDDEBUG 0
 
-//#define VERY_VERBOSE_LOGGING
+#define VERY_VERBOSE_LOGGING
 #ifdef VERY_VERBOSE_LOGGING
 #define ALOGVV ALOGV
 #else

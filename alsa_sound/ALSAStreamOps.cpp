@@ -25,7 +25,7 @@
 #include <dlfcn.h>
 
 #define LOG_TAG "ALSAStreamOps"
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 #define LOG_NDDEBUG 0
 #include <utils/Log.h>
 #include <utils/String8.h>
