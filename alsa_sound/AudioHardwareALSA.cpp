@@ -484,36 +484,36 @@ status_t AudioHardwareALSA::setVoiceVolume(float v)
 }
 
 #ifdef QCOM_FM_ENABLED
-status_t  AudioHardwareALSA::setFmVolume(float value)
-{
-    Mutex::Autolock autoLock(mLock);
-    status_t status = NO_ERROR;
+//status_t  AudioHardwareALSA::setFmVolume(float value)
+//{
+//    Mutex::Autolock autoLock(mLock);
+//    status_t status = NO_ERROR;
 
-    int vol;
+//    int vol;
 
-    for(ALSAHandleList::iterator it = mDeviceList.begin();
-      it != mDeviceList.end(); ++it) {
-        if((!strcmp(it->useCase, SND_USE_CASE_VERB_DIGITAL_RADIO)) ||
-           (!strcmp(it->useCase, SND_USE_CASE_MOD_PLAY_FM))) {
-            if (value < 0.0) {
-                ALOGW("setFmVolume(%f) under 0.0, assuming 0.0\n", value);
-                value = 0.0;
-            } else if (value > 1.0) {
-                ALOGW("setFmVolume(%f) over 1.0, assuming 1.0\n", value);
-                value = 1.0;
-            }
-            vol  = lrint((value * 0x2000) + 0.5);
+//    for(ALSAHandleList::iterator it = mDeviceList.begin();
+//      it != mDeviceList.end(); ++it) {
+//        if((!strcmp(it->useCase, SND_USE_CASE_VERB_DIGITAL_RADIO)) ||
+//           (!strcmp(it->useCase, SND_USE_CASE_MOD_PLAY_FM))) {
+//            if (value < 0.0) {
+//                ALOGW("setFmVolume(%f) under 0.0, assuming 0.0\n", value);
+//                value = 0.0;
+//            } else if (value > 1.0) {
+//                ALOGW("setFmVolume(%f) over 1.0, assuming 1.0\n", value);
+//                value = 1.0;
+//            }
+//            vol  = lrint((value * 0x2000) + 0.5);
 
-            ALOGV("setFmVolume(%f)\n", value);
-            ALOGV("Setting FM volume to %d (available range is 0 to 0x2000)\n", vol);
+//            ALOGV("setFmVolume(%f)\n", value);
+//            ALOGV("Setting FM volume to %d (available range is 0 to 0x2000)\n", vol);
 
-            mALSADevice->setFmVolume(vol, &(*it));
-            break;
-        }
-    }
+//            mALSADevice->setFmVolume(vol, &(*it));
+//            break;
+//        }
+//    }
 
-    return status;
-}
+//    return status;
+//}
 #endif
 
 status_t AudioHardwareALSA::setMasterVolume(float volume)
@@ -743,7 +743,8 @@ status_t AudioHardwareALSA::setParameters(const String8& keyValuePairs)
         ALOGV("set Fm Volume(%f)\n", fm_volume);
         ALOGV("Setting FM volume to %d (available range is 0 to 0x2000)\n", fm_volume);
 
-        mALSADevice->setFmVolume(fm_volume);
+//        mALSADevice->setFmVolume(fm_volume);
+	ALOGE("setFmVolume(fm_volume) disabled to fix compiling! You should probably fix this if you want to use it");
         param.remove(key);
     }
 
